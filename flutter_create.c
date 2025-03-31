@@ -9,6 +9,8 @@
 #include <unistd.h>
 #endif
 
+#define VERSION "1.0.0"
+
 #ifdef _WIN32
 #define UP_ARROW 72
 #define DOWN_ARROW 80
@@ -22,20 +24,19 @@ int getKeyPressLinux() {
     int c;
     struct termios oldt, newt;
 
-    tcgetattr(STDIN_FILENO, &oldt);  // Sauvegarde des paramètres du terminal
+    tcgetattr(STDIN_FILENO, &oldt);
     newt = oldt;
-    newt.c_lflag &= ~(ICANON | ECHO); // Désactive le mode canonique et l'écho
-    tcsetattr(STDIN_FILENO, TCSANOW, &newt); // Applique les nouveaux paramètres
+    newt.c_lflag &= ~(ICANON | ECHO);
+    tcsetattr(STDIN_FILENO, TCSANOW, &newt);
 
-    c = getchar();  // Lecture du caractère
+    c = getchar();
 
-    // Si le caractère est 27 (ESC), cela signifie que c'est une touche spéciale
     if (c == 27) {
-        getchar(); // Ignore le caractère '['
-        c = getchar(); // Lecture du caractère de direction
+        getchar();
+        c = getchar();
     }
 
-    tcsetattr(STDIN_FILENO, TCSANOW, &oldt); // Restaure les paramètres originaux
+    tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
     return c;
 }
 
@@ -47,7 +48,17 @@ int getKeyPressLinux() {
 #define getKeyPress getKeyPressLinux
 #endif
 
-int main() {
+int main(int argc, char *argv[]) {
+
+    if (argc > 1)
+    {
+        if (strcmp(argv[1], "-v") == 0 || strcmp(argv[1], "--version") == 0)
+        {
+            printf("flutter-create version %s\n", VERSION);
+            return 0;
+        }
+    }
+
     char projectName[100];
     char packageName[100] = "com.example";
     int selectedTemplate = 0;
