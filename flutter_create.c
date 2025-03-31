@@ -9,32 +9,36 @@
 #include <unistd.h>
 #endif
 
+#ifdef _WIN32
 #define UP_ARROW 72
 #define DOWN_ARROW 80
 #define ENTER_KEY 13
-
-#ifdef _WIN32
 int getKeyPressWindows() { return _getch(); }
 #else
+#define UP_ARROW 65
+#define DOWN_ARROW 66
+#define ENTER_KEY 10
 int getKeyPressLinux() {
     int c;
     struct termios oldt, newt;
 
-    tcgetattr(STDIN_FILENO, &oldt);
+    tcgetattr(STDIN_FILENO, &oldt);  // Sauvegarde des paramètres du terminal
     newt = oldt;
-    newt.c_lflag &= ~(ICANON | ECHO);
-    tcsetattr(STDIN_FILENO, TCSANOW, &newt);
+    newt.c_lflag &= ~(ICANON | ECHO); // Désactive le mode canonique et l'écho
+    tcsetattr(STDIN_FILENO, TCSANOW, &newt); // Applique les nouveaux paramètres
 
-    c = getchar(); 
+    c = getchar();  // Lecture du caractère
 
+    // Si le caractère est 27 (ESC), cela signifie que c'est une touche spéciale
     if (c == 27) {
-        getchar();
-        c = getchar();
+        getchar(); // Ignore le caractère '['
+        c = getchar(); // Lecture du caractère de direction
     }
 
-    tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
+    tcsetattr(STDIN_FILENO, TCSANOW, &oldt); // Restaure les paramètres originaux
     return c;
 }
+
 #endif
 
 #ifdef _WIN32
