@@ -13,7 +13,9 @@
 #define DOWN_ARROW 80
 #define ENTER_KEY 13
 
+#ifdef _WIN32
 int getKeyPressWindows() { return _getch(); }
+#endif
 int getKeyPressLinux() {
     int c;
     read(STDIN_FILENO, &c, 1);
