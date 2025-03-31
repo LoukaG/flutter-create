@@ -1,4 +1,6 @@
 # Flutter Create
+![demo r](https://github.com/user-attachments/assets/64e09610-12ab-4889-95df-e2e01dc54161)
+
 ## Features
 - Choose from multiple Flutter templates: *app, module, package, plugin, plugin_ffi*
 - Set a custom package name
