@@ -1,5 +1,5 @@
 # Flutter Create
-![demo r](https://github.com/user-attachments/assets/64e09610-12ab-4889-95df-e2e01dc54161)
+![demo flutter-create]([https://github.com/user-attachments/assets/64e09610-12ab-4889-95df-e2e01dc54161](https://loukag.com/assets/images/portfolio/fluttercreate%20demo.gif))
 
 ## Features
 - Choose from multiple Flutter templates: *app, module, package, plugin, plugin_ffi*
