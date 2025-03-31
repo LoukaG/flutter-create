@@ -16,19 +16,18 @@
 #ifdef _WIN32
 int getKeyPressWindows() { return _getch(); }
 #else
-int getKeyPressLinux()
-{
+int getKeyPressLinux() {
     int c;
     struct termios oldt, newt;
+
     tcgetattr(STDIN_FILENO, &oldt);
     newt = oldt;
     newt.c_lflag &= ~(ICANON | ECHO);
     tcsetattr(STDIN_FILENO, TCSANOW, &newt);
 
-    c = getchar();
+    c = getchar(); 
 
-    if (c == 27)
-    {
+    if (c == 27) {
         getchar();
         c = getchar();
     }
