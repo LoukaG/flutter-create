@@ -1,6 +1,7 @@
 # Flutter Create
 ## Features
 - Choose from multiple Flutter templates: *app, module, package, plugin, plugin_ffi*
+- Choose a folder structure: *default, features, clean_architecture, atomic_design*
 - Set a custom package name
 - For plugin and plugin_ffi templates, specify the target platforms.
 - Automatically upgrade Flutter before creating the project.
@@ -13,7 +14,7 @@
 ## Installation
 
 ### Windows
-1. Download the [flutter-create.exe](https://github.com/LoukaG/flutter-create/releases/download/1.0.0/flutter-create.exe) file.
+1. Download the [flutter-create.exe](https://github.com/LoukaG/flutter-create/releases) file.
 2. Move it to a directory of your choice (e.g.,  `C:\FlutterTools`).
 3. Press `Win + X` and select **System**.
 4. Click **Advanced system settings** on the left side.
@@ -23,7 +24,7 @@
 8. Click **OK** to save your changes.
 
 ### Linux
-1. Download the [flutter-create](https://github.com/LoukaG/flutter-create/releases/download/1.0.0/flutter-create) executable for Linux.
+1. Download the [flutter-create](https://github.com/LoukaG/flutter-create/releases) executable for Linux.
 2. Add the folder containing `flutter-create` to your system `PATH`.
 
 You can now run `flutter-create` from any command prompt.
