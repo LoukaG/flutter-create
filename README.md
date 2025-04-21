@@ -1,4 +1,6 @@
 # Flutter Create
+![demo flutter-create](https://loukag.com/assets/images/portfolio/fluttercreate%20demo.gif)
+
 ## Features
 - Choose from multiple Flutter templates: *app, module, package, plugin, plugin_ffi*
 - Choose a folder structure: *default, features, clean_architecture, atomic_design*
